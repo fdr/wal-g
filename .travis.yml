@@ -1,6 +1,12 @@
 language: go
+dist: trusty
+sudo: required
+before_install: sudo apt-get install -y liblzo2-dev
 go:
   - 1.10.x
+env:
+  - GOTAGS=
+  - GOTAGS=lzo
 before_deploy:
   - tar -zcf wal-g.linux-amd64.tar.gz -C cmd/wal-g/ wal-g
 deploy:
