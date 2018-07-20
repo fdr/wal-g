@@ -69,7 +69,7 @@ func handleTar(writeCloser io.WriteCloser, readerMaker ReaderMaker, crypter Cryp
 		}
 		err = decompressor.Decompress(writeCloser, readCloser)
 		if err != nil {
-			return errors.Wrapf(err, "ExtractAll: %v decompress failed. Is archive encrypted?", decompressor.FileExtension())
+			return errors.Wrapf(err, "ExtractAll: %v decompress failed. Is archive %v encrypted?", decompressor.FileExtension(), readerMaker.Path())
 		}
 		return nil
 	}
